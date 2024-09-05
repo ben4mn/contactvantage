@@ -36,3 +36,48 @@
     transform: rotate(360deg);
   }
 }
+
+/* Primary Colors */
+:root {
+  --deep-navy-blue: #1D3557;
+  --bright-turquoise: #00BFA6;
+  --soft-gray: #F5F5F5;
+  --electric-orange: #FF6F00;
+  --lime-green: #A3E635;
+  --soft-purple: #8E44AD;
+}
+
+.App {
+  color: var(--deep-navy-blue);
+  background-color: var(--soft-gray);
+}
+
+.App-header {
+  background-color: var(--deep-navy-blue);
+  color: var(--soft-gray);
+}
+
+.App-link {
+  color: var(--bright-turquoise);
+}
+
+/* You can add more specific styles using these colors as needed */
+.primary-button {
+  background-color: var(--bright-turquoise);
+  color: var(--deep-navy-blue);
+}
+
+.secondary-button {
+  background-color: var(--electric-orange);
+  color: var(--soft-gray);
+}
+
+.accent-text {
+  color: var(--lime-green);
+}
+
+.highlight {
+  background-color: var(--soft-purple);
+  color: var(--soft-gray);
+}
+
