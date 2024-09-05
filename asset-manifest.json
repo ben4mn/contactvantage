@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/contactvantage/static/css/main.aa099c80.css",
+    "main.js": "/contactvantage/static/js/main.c9331cbb.js",
+    "index.html": "/contactvantage/index.html",
+    "main.aa099c80.css.map": "/contactvantage/static/css/main.aa099c80.css.map",
+    "main.c9331cbb.js.map": "/contactvantage/static/js/main.c9331cbb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.aa099c80.css",
+    "static/js/main.c9331cbb.js"
+  ]
+}
