@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LineChart, Line, XAxis, YAxis, ResponsiveContainer, Tooltip } from 'recharts';
-import { HelpCircle, Phone, Clipboard } from 'lucide-react';
+import { HelpCircle, Phone, Clipboard, MessageCircle } from 'lucide-react';
 
 const dailyData = [
   { name: 'Mon', score: 4000 },
@@ -34,6 +34,7 @@ const monthlyData = [
 const AgentPage = () => {
   const navigate = useNavigate();
   const [timeFrame, setTimeFrame] = useState('D');
+  const [isChatOpen, setIsChatOpen] = useState(false);
   
   const getChartData = () => {
     switch(timeFrame) {
@@ -71,70 +72,98 @@ const AgentPage = () => {
         </div>
       </nav>
       
-      <main className="max-w-6xl mx-auto my-8 px-4">
-        <div className="bg-white rounded-lg shadow-lg p-6">
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-3xl font-bold text-navy">At A Glance</h2>
+      <div className="flex max-w-6xl mx-auto my-8 px-4">
+        {/* Quick Links Sidebar */}
+        <aside className="w-64 mr-8">
+          <div className="bg-white rounded-lg shadow-lg p-6">
+            <h2 className="text-xl font-bold text-navy mb-4">Quick Links</h2>
+            <ul className="space-y-2">
+              {[
+                { icon: Phone, text: 'My Calls' },
+                { icon: Clipboard, text: 'My Coaching' },
+              ].map(({ icon: Icon, text }, index) => (
+                <li key={index}>
+                  <button className="flex items-center w-full text-left bg-softgray text-navy px-4 py-2 rounded hover:bg-turquoise hover:text-white transition-colors">
+                    <Icon className="mr-2" size={20} />
+                    {text}
+                  </button>
+                </li>
+              ))}
+            </ul>
           </div>
-          
-          <div className="grid grid-cols-3 gap-6">
-            <div className="col-span-2 bg-softgray p-4 rounded-lg">
-              <div className="flex justify-between mb-2">
-                <h3 className="font-bold text-navy">Monit Scores</h3>
-                <div className="flex space-x-1">
-                  {['D', 'W', 'M'].map((item, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setTimeFrame(item)}
-                      className={`px-2 rounded text-white transition-colors ${
-                        timeFrame === item
-                          ? ['bg-turquoise', 'bg-orange', 'bg-purple'][index]
-                          : 'bg-gray-400 hover:bg-gray-500'
-                      }`}
-                    >
-                      {item}
-                    </button>
-                  ))}
-                </div>
-              </div>
-              <ResponsiveContainer width="100%" height={200}>
-                <LineChart data={getChartData()}>
-                  <XAxis dataKey="name" />
-                  <YAxis />
-                  <Tooltip />
-                  <Line type="monotone" dataKey="score" stroke="#00BFA6" />
-                </LineChart>
-              </ResponsiveContainer>
+        </aside>
+
+        {/* Main Content */}
+        <main className="flex-1 relative">
+          <div className="bg-white rounded-lg shadow-lg p-6 mb-16">
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-3xl font-bold text-navy">At A Glance</h2>
             </div>
             
-            <div className="space-y-4">
-              {['My Top Coaching Areas', 'My Top Skills'].map((title, index) => (
-                <div key={index} className="bg-white p-4 rounded-lg shadow">
-                  <h3 className="font-bold mb-2 text-navy">{title}</h3>
-                  <ol className="list-decimal list-inside text-navy">
-                    {[1, 2, 3].map((item) => (
-                      <li key={item}>{title === 'My Top Coaching Areas' ? `Focus ${item}` : `Skill ${item}`}</li>
+            <div className="grid grid-cols-3 gap-6">
+              <div className="col-span-2 bg-softgray p-4 rounded-lg">
+                <div className="flex justify-between mb-2">
+                  <h3 className="font-bold text-navy">Monit Scores</h3>
+                  <div className="flex space-x-1">
+                    {['D', 'W', 'M'].map((item, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setTimeFrame(item)}
+                        className={`px-2 rounded text-white transition-colors ${
+                          timeFrame === item
+                            ? ['bg-turquoise', 'bg-orange', 'bg-purple'][index]
+                            : 'bg-gray-400 hover:bg-gray-500'
+                        }`}
+                      >
+                        {item}
+                      </button>
                     ))}
-                  </ol>
+                  </div>
                 </div>
-              ))}
+                <ResponsiveContainer width="100%" height={200}>
+                  <LineChart data={getChartData()}>
+                    <XAxis dataKey="name" />
+                    <YAxis />
+                    <Tooltip />
+                    <Line type="monotone" dataKey="score" stroke="#00BFA6" />
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
+              
+              <div className="space-y-4">
+                {['My Top Coaching Areas', 'My Top Skills'].map((title, index) => (
+                  <div key={index} className="bg-white p-4 rounded-lg shadow">
+                    <h3 className="font-bold mb-2 text-navy">{title}</h3>
+                    <ol className="list-decimal list-inside text-navy">
+                      {[1, 2, 3].map((item) => (
+                        <li key={item}>{title === 'My Top Coaching Areas' ? `Focus ${item}` : `Skill ${item}`}</li>
+                      ))}
+                    </ol>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-          
-          <div className="flex justify-between mt-6">
-            {[
-              { icon: Phone, text: 'My Calls' },
-              { icon: Clipboard, text: 'My Coaching' },
-              { icon: HelpCircle, text: 'My AI' }
-            ].map(({ icon: Icon, text }, index) => (
-              <button key={index} className="flex items-center bg-softgray text-navy px-4 py-2 rounded hover:bg-turquoise hover:text-white transition-colors">
-                <Icon className="mr-2" size={20} />
-                {text}
-              </button>
-            ))}
+
+          {/* AI Assistant Bubble */}
+          <div className="absolute -right-16 bottom-0">
+            <button 
+              onClick={() => setIsChatOpen(!isChatOpen)} 
+              className="bg-turquoise text-white p-3 rounded-full shadow-lg hover:bg-orange transition-colors"
+            >
+              <MessageCircle size={24} />
+            </button>
+
+            {/* Chat Window */}
+            {isChatOpen && (
+              <div className="absolute bottom-16 right-0 w-80 h-96 bg-white rounded-lg shadow-xl p-4">
+                <h3 className="text-lg font-bold mb-2">AI Assistant</h3>
+                {/* Implement your chat UI here */}
+              </div>
+            )}
           </div>
-        </div>
-      </main>
+        </main>
+      </div>
     </div>
   );
 };

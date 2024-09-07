@@ -8,7 +8,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (password === 'mcdonalds') {
+    if (password === 'version2') {
       navigate('/landing');
     } else {
       setError('Incorrect password');
