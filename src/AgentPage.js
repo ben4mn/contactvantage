@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LineChart, Line, XAxis, YAxis, ResponsiveContainer, Tooltip } from 'recharts';
-import { HelpCircle, Phone, Clipboard, MessageCircle } from 'lucide-react';
+import {  Phone, Clipboard, MessageCircle } from 'lucide-react';
 
 const dailyData = [
   { name: 'Mon', score: 4000 },
