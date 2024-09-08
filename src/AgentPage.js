@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LineChart, Line, XAxis, YAxis, ResponsiveContainer, Tooltip } from 'recharts';
-import {  Phone, Clipboard, MessageCircle } from 'lucide-react';
+import { Phone, Clipboard } from 'lucide-react';
 
 const dailyData = [
   { name: 'Mon', score: 4000 },
@@ -34,7 +34,6 @@ const monthlyData = [
 const AgentPage = () => {
   const navigate = useNavigate();
   const [timeFrame, setTimeFrame] = useState('D');
-  const [isChatOpen, setIsChatOpen] = useState(false);
   
   const getChartData = () => {
     switch(timeFrame) {
@@ -79,11 +78,14 @@ const AgentPage = () => {
             <h2 className="text-xl font-bold text-navy mb-4">Quick Links</h2>
             <ul className="space-y-2">
               {[
-                { icon: Phone, text: 'My Calls' },
-                { icon: Clipboard, text: 'My Coaching' },
-              ].map(({ icon: Icon, text }, index) => (
+                { icon: Phone, text: 'My Calls', path: '/agent-calls' },
+                { icon: Clipboard, text: 'My Coaching', path: '/agent-coaching' },
+              ].map(({ icon: Icon, text, path }, index) => (
                 <li key={index}>
-                  <button className="flex items-center w-full text-left bg-softgray text-navy px-4 py-2 rounded hover:bg-turquoise hover:text-white transition-colors">
+                  <button 
+                    onClick={() => navigate(path)}
+                    className="flex items-center w-full text-left bg-softgray text-navy px-4 py-2 rounded hover:bg-turquoise hover:text-white transition-colors"
+                  >
                     <Icon className="mr-2" size={20} />
                     {text}
                   </button>
@@ -143,24 +145,6 @@ const AgentPage = () => {
                 ))}
               </div>
             </div>
-          </div>
-
-          {/* AI Assistant Bubble */}
-          <div className="absolute -right-16 bottom-0">
-            <button 
-              onClick={() => setIsChatOpen(!isChatOpen)} 
-              className="bg-turquoise text-white p-3 rounded-full shadow-lg hover:bg-orange transition-colors"
-            >
-              <MessageCircle size={24} />
-            </button>
-
-            {/* Chat Window */}
-            {isChatOpen && (
-              <div className="absolute bottom-16 right-0 w-80 h-96 bg-white rounded-lg shadow-xl p-4">
-                <h3 className="text-lg font-bold mb-2">AI Assistant</h3>
-                {/* Implement your chat UI here */}
-              </div>
-            )}
           </div>
         </main>
       </div>

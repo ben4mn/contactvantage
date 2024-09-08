@@ -10,6 +10,8 @@ import AskAIPage from './AskAIPage';
 import ExecutiveReportingPage from './ExecutiveReportingPage';
 import ExecutiveCallDetailPage from './ExecutiveCallDetailPage';
 import ExecutiveCoachingPage from './ExecutiveCoachingPage'; 
+import AgentCallsPage from './AgentCallsPage';
+import AgentCoachingPage from './AgentCoachingPage';
 
 const App = () => {
   return (
@@ -27,6 +29,8 @@ const App = () => {
         <Route path="/executive-call-detail" element={<ExecutiveCallDetailPage />} />
         <Route path="/executive-coaching" element={<ExecutiveCoachingPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="/agent-calls" element={<AgentCallsPage />} />
+        <Route path="/agent-coaching" element={<AgentCoachingPage />} />
       </Routes>
     </Router>
   );
