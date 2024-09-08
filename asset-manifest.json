@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/contactvantage/static/css/main.d7f302e2.css",
-    "main.js": "/contactvantage/static/js/main.36e04ae0.js",
+    "main.css": "/contactvantage/static/css/main.e06aec3d.css",
+    "main.js": "/contactvantage/static/js/main.41d655c4.js",
     "index.html": "/contactvantage/index.html",
-    "main.d7f302e2.css.map": "/contactvantage/static/css/main.d7f302e2.css.map",
-    "main.36e04ae0.js.map": "/contactvantage/static/js/main.36e04ae0.js.map"
+    "main.e06aec3d.css.map": "/contactvantage/static/css/main.e06aec3d.css.map",
+    "main.41d655c4.js.map": "/contactvantage/static/js/main.41d655c4.js.map"
   },
   "entrypoints": [
-    "static/css/main.d7f302e2.css",
-    "static/js/main.36e04ae0.js"
+    "static/css/main.e06aec3d.css",
+    "static/js/main.41d655c4.js"
   ]
 }
