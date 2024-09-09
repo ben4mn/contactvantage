@@ -9,7 +9,7 @@ const Login = () => {
 
   // Static set of credentials
   const validCredentials = [
-    { username: 'ben', password: 'sniffles' },
+    { username: 'ben', password: 'lana' },
     { username: 'erica', password: 'chilldaddy' },
     { username: 'david', password: 'iamgay' },// Add more credential pairs as needed
   ];
