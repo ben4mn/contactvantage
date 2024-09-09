@@ -157,7 +157,7 @@ const AgentCallsPage = () => {
         <div className="max-w-6xl mx-auto">
           <div className="flex justify-between items-center mb-2">
             <div>
-              <h1 className="text-2xl font-bold">Agent Calls</h1>
+              <h1 className="text-2xl font-bold">Agent Dashboard</h1>
               <button 
                 onClick={() => navigate('/landing')} 
                 className="mt-2 bg-turquoise text-white px-4 py-2 rounded cursor-pointer hover:bg-orange transition-colors"
@@ -198,7 +198,8 @@ const AgentCallsPage = () => {
         {/* Main Content */}
         <main className="flex-1">
           <div className="bg-white rounded-lg shadow-lg p-6">
-            <h2 className="text-2xl font-bold text-navy mb-4">Recent Calls</h2>
+            <h2 className="text-2xl font-bold text-navy mb-2">Recent Calls</h2>
+            <p className="text-sm text-gray-400 mb-4">You can sort and search this table as well as click calls for more details</p>
             
             {/* Filters and Search */}
             <div className="mb-4 flex flex-wrap items-center gap-4">
